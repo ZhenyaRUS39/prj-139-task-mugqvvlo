@@ -1,8 +1,9 @@
-# Plan: prj-139-task-mugqvvlo
+# Plan: task-mugqvvlo
 
 **Project:** `PRJ-865`  
 **Task ID:** `task-mugqvvlo`  
 **Repo:** `prj-139-task-mugqvvlo`  
+**Progress:** 1/5 subtasks done
 
 ## Summary
 
@@ -10,50 +11,45 @@
 
 ## Subtasks
 
-### 1. Проектирование схемы БД и структуры проекта
+### ❌ 1. Проектирование схемы БД и структуры проекта
 
 - **ID:** `sub-1`
 - **Profile:** `20razrab1`
-- **Tester:** `TBD`
-- **Status:** `pending`
+- **Status:** `failed`
 - **Description:** Инициализировать репозиторий (package.json/pyproject), выбрать стек (Node.js + Express/TypeScript или Python + FastAPI), спроектировать модели Book/Author/Genre, создать миграцию БД (SQLite/PostgreSQL), настроить подключение и ORM (Prisma/TypeORM или SQLAlchemy).
 - **Test plan:** Миграция применяется чисто на пустую БД (npm run migrate или alembic upgrade head); ORM подключается и выполняет SELECT 1; структура папок соответствует выбранному стеку.
 
-### 2. CRUD для книг (Book)
+### ⬜ 2. CRUD для книг (Book)
 
 - **ID:** `sub-2`
 - **Profile:** `30razrab2`
-- **Tester:** `TBD`
 - **Status:** `pending`
 - **Description:** Реализовать REST-эндпоинты GET/POST/PUT/DELETE /api/books с фильтрацией по автору/жанру, пагинацией и связями с Author и Genre через foreign keys.
 - **Test plan:** curl-сценарий: POST /api/books создаёт запись, GET возвращает её в списке, PUT обновляет поле, DELETE удаляет; 404 для несуществующего id; связь с author_id/genre_id возвращается в JSON.
 - **Dependencies:** `sub-1`
 
-### 3. CRUD для авторов и жанров (Author, Genre)
+### ⬜ 3. CRUD для авторов и жанров (Author, Genre)
 
 - **ID:** `sub-3`
 - **Profile:** `20razrab1`
-- **Tester:** `TBD`
 - **Status:** `pending`
 - **Description:** Реализовать REST-эндпоинты GET/POST/PUT/DELETE /api/authors и /api/genres, включая эндпоинт GET /api/authors/:id/books для получения всех книг автора.
 - **Test plan:** curl: POST /api/authors создаёт автора, GET /api/authors/:id/books возвращает только его книги; аналогично для /api/genres; удаление автора с книгами возвращает 409 или каскадирует (по выбранной стратегии).
 - **Dependencies:** `sub-1`
 
-### 4. Валидация ввода и обработка ошибок
+### ⬜ 4. Валидация ввода и обработка ошибок
 
 - **ID:** `sub-4`
 - **Profile:** `30razrab2`
-- **Tester:** `TBD`
 - **Status:** `pending`
 - **Description:** Добавить валидацию тел запросов (Joi/Zod или Pydantic), унифицированный формат ошибок {error, code, details}, статус-коды 400/404/409/500, middleware логирования запросов.
 - **Test plan:** POST с пустым title возвращает 400 со списком ошибок полей; запрос несуществующего ресурса даёт 404 в едином формате; интеграционный прогон через скрипт smoke.sh без5xx.
 - **Dependencies:** `sub-2`, `sub-3`
 
-### 5. README + smoke-тесты + примеры запросов
+### ⬜ 5. README + smoke-тесты + примеры запросов
 
 - **ID:** `sub-5`
 - **Profile:** `20razrab1`
-- **Tester:** `TBD`
 - **Status:** `pending`
 - **Description:** Написать README с инструкцией запуска (env, миграции, npm run dev/uvicorn), коллекцией curl-примеров для всех эндпоинтов и финальным smoke-скриптом, прогоняющим основные сценарии против запущенного сервера.
 - **Test plan:** bash scripts/smoke.sh выполняется против запущенного на :8000/:3000 сервера с кодом выхода 0; README содержит блоки Quickstart и API Reference с примерами.
